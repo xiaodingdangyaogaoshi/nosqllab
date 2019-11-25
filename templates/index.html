@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>叮当</title>
+    <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="static/css/main.css"/>
+</head>
+<body>
+<div class="topbar-wrap white">
+    <div class="topbar-inner clearfix">
+        <div class="topbar-logo-wrap clearfix">
+            <h1 class="topbar-logo none"><a href="index.html" class="navbar-brand">nosql实验</a></h1>
+            <ul class="navbar-list clearfix">
+                <li><a class="on" href="index.html">首页</a></li>
+                <li><a href="/" target="_blank">叮当</a></li>
+            </ul>
+        </div>
+        <div class="top-info-wrap">
+            <ul class="top-info-list clearfix">
+                <li><a href="#">我的</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container clearfix">
+    <div class="sidebar-wrap">
+        <div class="sidebar-title">
+            <h1>菜单</h1>
+        </div>
+        <div class="sidebar-content">
+            <ul class="sidebar-list">
+                <li>
+                    <a href="#"><i class="icon-font">&#xe003;</i>常用操作</a>
+                    <ul class="sub-menu">
+                        <li><a href="/"><i class="icon-font">&#xe008;</i>实验4</a></li>
+                        <li><a href="/lab5"><i class="icon-font">&#xe008;</i>实验5</a></li>
+                        <li><a href="/lab6"><i class="icon-font">&#xe008;</i>实验6</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="index.html">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">实验四</span></div>
+        </div>
+
+        <div class="result-wrap">
+            <form name="myform" id="myform" method="post">
+                <div class="result-title">
+                    请为实验一建立的学生、教师、课程表插入数据
+                </div>
+
+            </form>
+        </div>
+
+        {% with messages = get_flashed_messages() %}
+            <div>{{ messages[0] }}</div>
+        {% endwith %}
+        <div class="search-wrap">
+            <div class="search-content">
+                 <th width="120">插入学生表信息<br /></th>
+                <form action=" " method="post"id="myformstudent" name="myform2student" enctype="multipart/form-data">
+                    <table class="search-tab">
+                        <tr>
+
+                            <td><input class="common-text" placeholder="SID" name="SID" value="" id=""  type="text"></td>
+                            <td><input class="common-text" placeholder="NAME" name="SNAME" value="" id="" type="text"></td>
+                            <td><input class="common-text" placeholder="SEX" name="SSEX" value="" id="" type="text"></td>
+                            <td><input class="common-text" placeholder="AGE" name="SAGE" value="" id="" type="text"><br /></td>
+                            <td><input class="common-text" placeholder="BIRTHDAY" name="BIRTHDAY" value="" id="" type="text"></td>
+                            <td><input class="common-text" placeholder="DNAME" name="SDNAME" value="" id="" type="text"></td>
+                            <td><input class="common-text" placeholder="CLASS" name="SCLASS" value="" id="" type="text"><br /></td>
+                            <a href="/lab4_charu/{{ 1 }}"><td><input class="btn btn-primary btn2" name="charustudent" value="插入student" type="submit" onclick="buy(1)"></td></a>
+                        </tr>
+                    </table>
+                </form>
+
+            </div>
+        </div>
+        <div class="search-wrap">
+            <div class="search-content">
+                 <th width="120">插入教师表<br /></th>
+                <form action=" " method="post"id="myformteacher" name="myformteacher" enctype="multipart/form-data">
+                    <table class="search-tab">
+                        <tr>
+                            <td><input class="common-text" placeholder="TID" name="TID" value="" id=""  type="text"></td>
+                            <td><input class="common-text" placeholder="NAME" name="TNAME" value="" id="" type="text"></td>
+                            <td><input class="common-text" placeholder="SEX" name="TSEX" value="" id="" type="text"></td>
+                            <td><input class="common-text" placeholder="AGE" name="TAGE" value="" id="" type="text"><br /></td>
+
+                            <td><input class="common-text" placeholder="DNAME" name="TDNAME" value="" id="" type="text"></td>
+
+                            <td><input class="btn btn-primary btn2" name="charuteacher" value="插入teacher" type="submit" onclick="buy(2)"></td>
+                        </tr>
+                    </table>
+                </form>
+
+            </div>
+        </div>
+        <div class="search-wrap">
+            <div class="search-content">
+                 <th width="120">插入课程表<br /></th>
+                <form action=" " method="post"id="myformclass" name="myformclass" enctype="multipart/form-data">
+                    <table class="search-tab">
+                        <tr>
+                            <td><input class="common-text" placeholder="CID" name="CID" value="" id=""  type="text"></td>
+                            <td><input class="common-text" placeholder="NAME" name="CNAME" value="" id="" type="text"></td>
+                            <td><input class="common-text" placeholder="FCID" name="FCID" value="" id="" type="text"></td>
+                            <td><input class="common-text" placeholder="CREDIT" name="CREDIT" value="" id="" type="text"><br /></td>
+
+                            <td><input class="btn btn-primary btn2" name="charucourse" value="插入course" type="submit" onclick="buy(3)"></td>
+                        </tr>
+                    </table>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!--/main-->
+</div>
+</body>
+<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>确认是否提交</title>
+<script type="text/javascript">
+    function buy(state) {
+        if (confirm("确认要提交吗？确定后不可改动")) {
+            window.event.returnValue = true;
+            console.log(id);
+            var data={
+                'state':state
+            };
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: '/lab4_charu',
+                data: data,
+            })
+        }
+    }
+
+</script>
+</html>

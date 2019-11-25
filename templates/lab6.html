@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>叮当</title>
+    <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="static/css/main.css"/>
+</head>
+<body>
+<div class="topbar-wrap white">
+    <div class="topbar-inner clearfix">
+        <div class="topbar-logo-wrap clearfix">
+            <h1 class="topbar-logo none"><a href="index.html" class="navbar-brand">nosql实验</a></h1>
+            <ul class="navbar-list clearfix">
+                <li><a class="on" href="index.html">首页</a></li>
+                <li><a href="/" target="_blank">叮当</a></li>
+            </ul>
+        </div>
+        <div class="top-info-wrap">
+            <ul class="top-info-list clearfix">
+                <li><a href="#">我的</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container clearfix">
+        <div class="sidebar-wrap">
+        <div class="sidebar-title">
+            <h1>菜单</h1>
+        </div>
+        <div class="sidebar-content">
+            <ul class="sidebar-list">
+                <li>
+                    <a href="#"><i class="icon-font">&#xe003;</i>常用操作</a>
+                    <ul class="sub-menu">
+                        <li><a href="/"><i class="icon-font">&#xe008;</i>实验4</a></li>
+                        <li><a href="/lab5"><i class="icon-font">&#xe008;</i>实验5</a></li>
+                        <li><a href="/lab6"><i class="icon-font">&#xe008;</i>实验6</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="index">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">作品管理</span></div>
+        </div>
+        <div class="search-wrap">
+            <div class="search-content">
+                <form action="#" method="post">
+                    <table class="search-tab">
+                        <tr>
+                            <th width="70">学号:</th>
+                            <td><input class="common-text" placeholder="学号" name="keywords" value="" id="" type="text"></td>
+                            <td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td>
+                            <td><a href="/addcourse" ><input class="btn btn-primary btn2" name="charucourse" value="插入" type="button"></a></td>
+                        </tr>
+
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div class="result-wrap">
+            <form name="myform" id="myform" method="post">
+
+                <div class="result-content">
+                    <table class="result-tab" width="100%">
+                        <tr>
+                            <th class="tc" width="5%"><input class="allChoose" name="" type="checkbox"></th>
+
+                            <th>学号</th>
+                            <th>姓名</th>
+                            <th>课程号</th>
+                            <th>课程</th>
+                            <th>操作</th>
+                        </tr>
+                        {% for i in u %}
+                        <tr>
+                            <td class="tc"><input name="id[]" value="59" type="checkbox"></td>
+                            <td>{{ i[0] }}</td>
+                            <td>{{ i[1] }}</td>
+                            <td>{{ i[2] }}</td>
+                            <td>{{ i[3] }}</td>
+                            <td>
+
+                                <input type="button" value="删除" onclick="return del({{ i[4] }})">
+                                <a href="/updatenews/{{ i[4] }}"><input type="button" value="修改"></a>
+
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--/main-->
+</div>
+</body>
+ <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>确认是否删除</title>
+<script type="text/javascript">
+    function del(id) {
+        if (!confirm("确认要删除？")) {
+            window.event.returnValue = false;
+            console.log(id);
+            var data = {
+                'id': id
+            };
+            console.log(data)
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: '/deleteget',
+                data: data,
+            });
+        }
+    }
+        var data={
+        'id':id
+        };
+        console.log(data)
+        $.ajax({
+        type:'POST',
+        dataType:'json',
+        url:'/updatenews',
+        data:data,
+        })
+    }
+</script>
+</html>
